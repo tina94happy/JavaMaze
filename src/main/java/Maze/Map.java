@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Map {
     private Image grass;
     private Image wall;
+    private Image bone;
     private Scanner map_file;
     private String Map_array [] = new String[14];
 
@@ -19,6 +20,8 @@ public class Map {
         grass = img.getImage();
         img = new ImageIcon("pictures/wall.png");
         wall = img.getImage();
+        img = new ImageIcon("pictures/bone.png");
+        bone = img.getImage();
         openFile();
         readFile();
         closeFile();
@@ -45,6 +48,9 @@ public class Map {
     }
     public Image getWall(){
         return wall;
+    }
+    public Image getBone(){
+        return bone;
     }
     public void readFile(){
         while (map_file.hasNext()){
