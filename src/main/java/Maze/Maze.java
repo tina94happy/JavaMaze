@@ -11,7 +11,7 @@ public class Maze {
         JFrame frame = new JFrame();
         frame.setTitle("迷宮遊戲");
 
-        frame.setSize(800, 500);
+        frame.setSize(462, 485);
         frame.add(new Board());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);

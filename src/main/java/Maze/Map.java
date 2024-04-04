@@ -12,6 +12,7 @@ public class Map {
     private Image grass;
     private Image wall;
     private Image bone;
+    private Image congrats;
     private Scanner map_file;
     private String Map_array [] = new String[14];
 
@@ -22,6 +23,8 @@ public class Map {
         wall = img.getImage();
         img = new ImageIcon("pictures/bone.png");
         bone = img.getImage();
+        img = new ImageIcon("pictures/win.png");
+        congrats = img.getImage();
         openFile();
         readFile();
         closeFile();
@@ -51,6 +54,9 @@ public class Map {
     }
     public Image getBone(){
         return bone;
+    }
+    public Image getCongrats(){
+        return congrats;
     }
     public void readFile(){
         while (map_file.hasNext()){
