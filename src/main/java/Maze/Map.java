@@ -13,6 +13,7 @@ public class Map {
     private Image wall;
     private Image bone;
     private Image congrats;
+    private Image home;
     private Scanner map_file;
     private String Map_array [] = new String[14];
 
@@ -25,10 +26,33 @@ public class Map {
         bone = img.getImage();
         img = new ImageIcon("pictures/win.png");
         congrats = img.getImage();
+        img = new ImageIcon("pictures/home.png");
+        home = img.getImage();
         openFile();
         readFile();
         closeFile();
     }
+    public void removeBone(int x, int y) {
+        StringBuilder sb = new StringBuilder(Map_array[y]);
+        sb.setCharAt(x, 'g'); // 將指定位置的地圖值設置為空字符
+        Map_array[y] = sb.toString();
+    }
+    public void resetBone() {
+        // 重新讀取地圖文件以獲取初始狀態的 "bone" 位置
+        openFile();
+        readFile();
+        closeFile();
+    }
+    public boolean hasBonesRemaining() {
+        for (String row : Map_array) {
+            if (row.contains("b")) {
+                return true; // 如果還有骨頭存在，返回 true
+            }
+        }
+        return false; // 如果所有行中都沒有骨頭，返回 false
+    }
+
+
 
     public void openFile(){
         File file = new File("Map/map1.txt");
@@ -55,9 +79,12 @@ public class Map {
     public Image getBone(){
         return bone;
     }
+    public Image getHome() {return home;}
+
     public Image getCongrats(){
         return congrats;
     }
+
     public void readFile(){
         while (map_file.hasNext()){
             for (int i=0; i<14;i++){
@@ -75,5 +102,6 @@ public class Map {
         map.openFile();
 
     }
+
 
 }

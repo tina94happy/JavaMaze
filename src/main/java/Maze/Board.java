@@ -11,6 +11,8 @@ public class Board extends JPanel implements ActionListener {
     private String message="";
     private Font font = new Font("Serif", Font.BOLD,48);
     private Boolean win=false;
+    private JButton playAgainButton = new JButton("Play Again!");
+
 
     public Board (){
         map = new Map();
@@ -28,10 +30,16 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (map.getMap(p.getTileX(),p.getTileY()).equals("b")){
+            map.removeBone(p.getTileX(),p.getTileY());
+
+        }
+        if (map.getMap(p.getTileX(),p.getTileY()).equals("h") && map.hasBonesRemaining()){
             message="Delicious!";
             win=true;
+
         }
         repaint();
+
     }
 
     public void paint(Graphics g){
@@ -42,10 +50,16 @@ public class Board extends JPanel implements ActionListener {
             g.setColor(Color.BLACK);
             g.drawString(message,125, 330);
 
-            JButton playAgainButton = new JButton("Play Again!");
             playAgainButton.setBounds(125, 385, 200, 50);
+
             add(playAgainButton);
             setLayout(null);
+            if (playAgainButton.getModel().isPressed()){
+                win=false;
+                p.resetPosition();
+                map.resetBone();
+            }
+
 
         } else{
             for(int x=0;x<14 ;x++){
@@ -57,7 +71,10 @@ public class Board extends JPanel implements ActionListener {
                         g.drawImage(map.getWall(),x*32,y*32,null);
                     }else if(map.getMap(x,y).equals("b")){
                         g.drawImage(map.getBone(),x*32,y*32,null);
+                    }else if(map.getMap(x,y).equals("h")){
+                        g.drawImage(map.getHome(),x*32,y*32,null);
                     }
+
                 }
             }
             g.drawImage(p.getPlayer(),p.getTileX()*32,p.getTileY()*32,null);
@@ -65,6 +82,7 @@ public class Board extends JPanel implements ActionListener {
 
 
     }
+
 
     public class ActionListener extends KeyAdapter {
         public void keyPressed(KeyEvent e){
@@ -107,5 +125,6 @@ public class Board extends JPanel implements ActionListener {
         public void keyTyped(KeyEvent e){
 
         }
+
     }
 }

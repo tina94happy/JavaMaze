@@ -30,4 +30,9 @@ public class Player {
         tilex+=dx;
         tiley+=dy;
     }
+
+    public void resetPosition() {
+        tilex = 1;
+        tiley = 1;
+    }
 }
