@@ -4,6 +4,8 @@
 
 In JavaMaze, you'll embark on an adventure with a lovable pug whose tummy is grumbling! You must help him find all the bones before he'll agree to go back home!
 
+![pug_hunger_game](demo/pug_maze.gif)
+
 **How to Run**
 
 1. Clone the repository:
