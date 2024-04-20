@@ -9,7 +9,7 @@ public class Maze {
 
     public Maze(){
         JFrame frame = new JFrame();
-        frame.setTitle("迷宮遊戲");
+        frame.setTitle("Pug Hunger Game");
 
         frame.setSize(462, 485);
         frame.add(new Board());

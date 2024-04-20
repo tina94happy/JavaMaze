@@ -33,7 +33,7 @@ public class Board extends JPanel implements ActionListener {
             map.removeBone(p.getTileX(),p.getTileY());
 
         }
-        if (map.getMap(p.getTileX(),p.getTileY()).equals("h") && map.hasBonesRemaining()){
+        if (map.noBonesRemaining() && map.getMap(p.getTileX(),p.getTileY()).equals("h")){
             message="Delicious!";
             win=true;
 
@@ -71,8 +71,11 @@ public class Board extends JPanel implements ActionListener {
                         g.drawImage(map.getWall(),x*32,y*32,null);
                     }else if(map.getMap(x,y).equals("b")){
                         g.drawImage(map.getBone(),x*32,y*32,null);
-                    }else if(map.getMap(x,y).equals("h")){
+                    }else if(map.getMap(x,y).equals("h") && map.noBonesRemaining()){
                         g.drawImage(map.getHome(),x*32,y*32,null);
+
+                    }else {
+                        g.drawImage(map.getGrass(),x*32,y*32,null);
                     }
 
                 }
