@@ -10,12 +10,12 @@ In JavaMaze, you'll embark on an adventure with a lovable pug whose tummy is gru
 
 1. Clone the repository:
 ```bash
-git clone <repository_url>
+git clone [<repository_url>](https://github.com/tina94happy/JavaMaze.git)
 ```
 
 2. Navigate to the project directory:
 ```bash
-cd project_directory
+cd JavaMaze
 ```
 
 3. Execute the JAR file:
